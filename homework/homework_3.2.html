@@ -1,26 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <style>
+        
+        #eat {
+            margin:1%;
+        }  
+    </style>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
 <title>homework_3.2</title>
 </head>
 
 <body>
-<p>Ruqiya Khadri.</p>
-<p class="lead"> </p>
-    <form id="/orderOptions">
-        <div class="form group">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<p class="lead">Ruqiya Khadri.</p>
+
+<form id="/orderOptions">
+    <div class="form group">
         <input id="name" type="text" placeholder="Enter your name">
-        <label> <input  type="radio" name="whereEating"> Eat in </label>
-        <label> <input type="radio" name="whereEating"> Carry Out </label>
-        <label> <input type="radio" name="whereEating"> Delivery </label>
+        <label> <input id="eat" type="radio" name="whereEating"> Eat in </label>
+        <label> <input id="eat" type="radio" name="whereEating"> Carry Out </label>
+        <label> <input id="eat" type="radio" name="whereEating"> Delivery </label>
         <select name="foodType">
             <option value="teobokki">Teobokki</option>
             <option value="pasta">Pasta</option>
             <option value="pizza">Pizza</option> </select>
-        </div>
+    </div>
                
-    </form>
+</form>
 </body>
 
 </html>
