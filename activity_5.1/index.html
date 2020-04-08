@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    
+    
+</head>
+<body>
+    <script>
+        let apiEndpoint = "https://api.nasa.gov/planetary/apod?api_key=V1AdKuxFrGCxo6t7RNtl80R1ERtDGhoim0zBQEOV";
+        fetch(apiEndpoint)
+        .then(response => {return response.json()})
+        .then(json => { console.log(json);
+        let h1 = document.createElement("h1");
+        h1.textContent = json.title ;
+        
+        })
+        .catch(err => alert(err))
+        
+        
+    </script>
+       
+        
+    
+</body>

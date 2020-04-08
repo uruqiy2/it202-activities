@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<head>
+    
+    <link href=
+</head>
+<body>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script>
+        
+        
+        var db = new Dexie("MyFriendDB");
+        db.version(1).stores({
+	friends: '++id,name,age'
+});
+log ("Using Dexie v" + Dexie.semVer);
+    </script>
+       
+        
+    
+</body>

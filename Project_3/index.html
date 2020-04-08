@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>project_2</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <canvas id="c1"></canvas>
+  <script>
+    let img = new Image();
+      img.src = 
+    let c = document.querySelector("#c1");
+    let ctx = c.getContext("2d");
+
+    let player = {x:100, y:100, radius:10, speed: 20};
+    let harm = {x:100, y:100, speed:55};
+    let benefit = {x:90, y:90, speed: 50}
+    let game = {score: 0, lives: 2};
+    
+
+    const draw = () => {
+      // clear
+      ctx.clearRect (0,0, c.width, c.height);
+
+      // update values
+      player["x"] += 1;
+
+      // handle edge condition
+      if (player["x"] > c.width + player["radius"]) {
+        player["x"] = -player["radius"];
+      }
+
+      // draw
+      ctx.beginPath();
+      ctx.arc(player["x"],player["y"],player["radius"],0, Math.PI*2);
+      ctx.closePath();
+      ctx.fillStyle = "blue";
+      ctx.fill();
+      
+
+      ctx.fillText("Lives: " + game["lives"], 25,25)
+      // repeat
+      window.requestAnimationFrame(draw);
+    } 
+
+
+    draw();
+  </script>
+
+
+  </body>
+</html>
