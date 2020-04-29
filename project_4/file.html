@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+    <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    :root {
+      --mdc-theme-primary: red;
+    }
+
+    body {margin: 0;}
+    main {margin-left: 8px;}
+      .views {
+          display: block;         
+      }
+      //to show one page at a time
+    div.view {
+          
+          display: none; 
+      }
+  </style>
+  <script>
+       let apiEndpoint = "https://data.cityofchicago.org/resource/v6vf-nfxy.json";
+        fetch(apiEndpoint)
+        .then(response => {return response.json()})
+        .then(json => { console.log(json);
+        })
+        .catch(err => alert(err))</script>
+
+  </head>
+  <body>  
+
+  <div class="mdc-drawer-scrim"></div>
+
+<header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+      <span class="mdc-top-app-bar__title">COVID-19</span>
+    </section>
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <a class="mdc-top-app-bar__section--activated" href="#" aria-current="page" 
+           onclick="return Show('#Home', '#Search', '#Table', '#Chart');"> 
+        <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+                aria-label="true">home</button></a>
+        
+       <a class="mdc-top-app-bar__section--activated" href="#Search"  
+           onclick="return Show('#Search','#Home', '#Table', '#Chart');"> 
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+              aria-hidden="true">search</button></a>
+        
+        <a class="mdc-top-app-bar__section--activated" href="#Table"  
+           onclick="return Show('#Table', '#Home', '#Search', '#Chart');"> 
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+              aria-label="show the table">timeline</button></a>
+        
+        <a class="mdc-top-app-bar__section--activated" href="#Chart" 
+           onclick="return Show('#Chart', '#Home', '#Search', '#Table');"> 
+      <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" 
+              aria-label="display the chart">tablechart</button></a>
+      </section>
+  </div>
+</header>
+
+  <main class="mdc-top-app-bar--fixed-adjust">
+        <div id="home" class="views" >
+            <h1> Home </h1>
+            The API used in this project is from  
+            
+            <strong> https://pomber.github.io/covid19/timeseries.json  </strong>
+            <br> "
+            Click search icon to look the country "            
+        </div>
+        <div id="Search" class="view">
+            <p Select the country you want to check the data for > </p>
+
+          <p Use Clear All button after searching to clear the previous data ></p>
+            <div> <input id="country_name" list="listName">
+                <datalist id="listName"></datalist>
+                
+                
+            </div>
+        </div>
+      <div id="country_names">
+            <button id="add_button" >
+                    Add</button>
+          <p id="country_name"> </p>
+        </div>
+        <button id="Display_Table">
+            Display Table
+      </button>
+      <button id="clear" >
+          Clear
+      </button>
+      
+        <div id="Table" class="view">
+      <div class="mdc-data-table">
+          <table class="mdc-data-table__table">
+                          
+          </table>
+            </div>
+           </div>
+    
+  </main>
+  <script>
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+
+    mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
+
+    const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+
+
+    document.querySelector(".mdc-top-app-bar__navigation-icon")
+      .addEventListener("click", 
+          (e) => {drawer.open = true;}
+      );
+      
+      document.querySelectorAll('aside.mdc-drawer a.mdc-list-item').forEach(item => {
+  item.addEventListener('click', event => {
+    let target = (item.getAttribute('href'))
+    document.querySelector(target).style.display = 'block'
+      drawer.open= false;
+    
+  })
+})
+    </script>
+  </body>
+</html>
